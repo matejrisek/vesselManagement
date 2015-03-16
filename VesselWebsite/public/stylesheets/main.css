@@ -1,0 +1,21 @@
+/* Line after header */
+.horizontal-line {
+	border-bottom: 1px solid #e5e5e5;
+}
+
+/* Fix for Bootstrap 3 with Angular UI Bootstrap */
+.modal {
+	display: block;
+}
+
+input.ng-invalid.ng-touched {
+	background-color: #FA787E;
+}
+
+.help-inline {
+	color: red;
+}
+
+.search-input {
+	width: 100%;	
+}

@@ -1,0 +1,1 @@
+angular.module('vesselManagementApp', ['vesselModule', 'smart-table']);

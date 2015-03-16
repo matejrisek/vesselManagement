@@ -1,0 +1,103 @@
+<div class="modal-header">
+	<h3 class="modal-title">{{vessel._id ? 'Edit vessel' : 'Create new
+		vessel'}}</h3>
+</div>
+<form name="vesselForm" class="modal-body" novalidate>
+	<div class="form-horizontal">
+		<!-- Vessel attributes -->
+		<!-- Name -->
+		<div class="form-group">
+			<label for="inputName" class="control-label col-xs-2">Name</label>
+			<div class="col-xs-10">
+				<input type="text" class="form-control" id="inputName"
+					name="vesselName" placeholder="Vessel's name"
+					ng-model="vessel.name" ng-init="vessel.name" required> <span
+					class="help-inline"
+					ng-show="vesselForm.vesselName.$touched && vesselForm.vesselName.$error.required">Required</span>
+			</div>
+		</div>
+		<!-- Width -->
+		<div class="form-group">
+			<label for="inputWidth" class="control-label col-xs-2">Width</label>
+			<div class="col-xs-10">
+				<div class="input-group">
+					<input type="number" class="form-control" id="inputWidth"
+						name="vesselWidth" placeholder="Vessel's width"
+						ng-model="vessel.width" min="0" required> <span
+						class="input-group-addon">m</span>
+				</div>
+				<span class="help-inline"
+					ng-show="vesselForm.vesselWidth.$touched && vesselForm.vesselWidth.$error.required">Required</span>
+				<span class="help-inline"
+					ng-show="vesselForm.vesselWidth.$error.number">Invalid
+					number format (Expected integer or decimal in format xx.xx)</span>
+			</div>
+		</div>
+		<!-- Length -->
+		<div class="form-group">
+			<label for="inputLength" class="control-label col-xs-2">Length</label>
+			<div class="col-xs-10">
+				<div class="input-group">
+					<input type="number" class="form-control" id="inputLength"
+						name="vesselLength" placeholder="Vessel's length"
+						ng-model="vessel.length" min="0" required> <span
+						class="input-group-addon">m</span>
+				</div>
+				<span class="help-inline"
+					ng-show="vesselForm.vesselLength.$touched && vesselForm.vesselLength.$error.required">Required</span>
+				<span class="help-inline"
+					ng-show="vesselForm.vesselLength.$error.number">Invalid
+					number format (Expected integer or decimal in format xx.xx)</span>
+			</div>
+		</div>
+		<!-- Draft -->
+		<div class="form-group">
+			<label for="inputDraft" class="control-label col-xs-2">Draft</label>
+			<div class="col-xs-10">
+				<div class="input-group">
+					<input type="number" class="form-control" id="inputDraft"
+						name="vesselDraft" placeholder="Vessel's draft"
+						ng-model="vessel.draft" min="0" required> <span
+						class="input-group-addon">m</span>
+				</div>
+				<span class="help-inline"
+					ng-show="vesselForm.vesselDraft.$touched && vesselForm.vesselDraft.$error.required">Required</span>
+				<span class="help-inline"
+					ng-show="vesselForm.vesselDraft.$error.number">Invalid
+					number format (Expected integer or decimal in format xx.xx)</span>
+			</div>
+		</div>
+		<!-- Latitude -->
+		<div class="form-group">
+			<label for="inputLatitude" class="control-label col-xs-2">Latitude</label>
+			<div class="col-xs-10">
+				<input type="number" class="form-control" id="inputLatitude"
+					name="vesselLatitude" placeholder="Last seen latitude"
+					ng-model="vessel.lat" required> <span class="help-inline"
+					ng-show="vesselForm.vesselLatitude.$touched && vesselForm.vesselLatitude.$error.required">Required</span>
+				<span class="help-inline"
+					ng-show="vesselForm.vesselLatitude.$error.number">Invalid
+					number format (Expected integer or decimal in format xx.xx)</span>
+			</div>
+		</div>
+		<!-- Longitude -->
+		<div class="form-group">
+			<label for="inputLongitude" class="control-label col-xs-2">Longitude</label>
+			<div class="col-xs-10">
+				<input type="number" class="form-control" id="inputLongitude"
+					name="vesselLongitude" placeholder="Last seen longitude"
+					ng-model="vessel.long" required> <span class="help-inline"
+					ng-show="vesselForm.vesselLongitude.$touched && vesselForm.vesselLongitude.$error.required">Required</span>
+				<span class="help-inline"
+					ng-show="vesselForm.vesselLongitude.$error.number">Invalid
+					number format (Expected integer or decimal in format xx.xx)</span>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-success"
+			ng-disabled="vesselForm.$invalid" ng-click="ok()">{{vessel._id
+			? 'Save' : 'Create'}}</button>
+		<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	</div>
+</form>

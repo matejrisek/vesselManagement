@@ -1,0 +1,76 @@
+@(message: String) @main("Vessel Management Tool") {
+<!-- <div ng-controller="vesselController" ng-init="listVessels()" > -->
+<div ng-controller="vesselController as vc">
+
+	<nav class="navbar">
+		<div class="container-fluid">
+			<div class="navbar-header navbar-right">
+				<button type="button" class="btn btn-success navbar-btn"
+					ng-click="createModal()">
+					<span class="glyphicon glyphicon-plus"></span> Create new vessel
+				</button>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container-fluid">
+		<div class="row">
+			<table class="table table-striped" st-table="displayed"
+				st-safe-src="rowCollection" st-pipe="listVessels">
+				<thead>
+					<tr>
+						<th st-sort="name">Name</th>
+						<th>Width</th>
+						<th>Length</th>
+						<th>Draft</th>
+						<th>Last seen position</br>(lat, long)
+						</th>
+						<th></th>
+						<th></th>
+					</tr>
+					<tr>
+						<th colspan="2"><input st-search="name"
+							ng-model="searchInput" type="search"
+							class="search-input form-control" id="searchInput" placeholder="Search by name"/></th>
+						<th colspan="5"></th>
+					</tr>
+				</thead>
+				<tbody ng-show="!mc.isLoading">
+					<tr ng-repeat="vessel in vessels">
+						<td>{{vessel.name}}</td>
+						<td>{{vessel.width}} m</td>
+						<td>{{vessel.length}} m</td>
+						<td>{{vessel.draft}}</td>
+						<td>({{vessel.lat}}, {{vessel.long}})</td>
+						<td>
+							<button type="button" class="btn btn-warning edit-button"
+								ng-click="createModal(vessel)">
+								<span class="glyphicon glyphicon-pencil"></span> Edit
+							</button>
+						</td>
+						<td>
+							<button type="button" class="btn btn-danger"
+								ng-click="removeVessel(vessel)">
+								<span class="glyphicon glyphicon-trash"></span>
+							</button>
+						</td>
+					</tr>
+				</tbody>
+				<tbody ng-show="mc.isLoading">
+					<tr>
+						<td colspan="7" class="text-center">Loading ...</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td class="text-center" st-pagination=""
+							st-items-by-page="itemsByPage" colspan="7"></td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</div>
+
+</div>
+
+}
