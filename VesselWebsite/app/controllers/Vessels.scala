@@ -47,7 +47,6 @@ object Vessels extends Controller with MongoController {
 
       futureVesselsJsonArray.map {
         vessels =>
-          println(vessels)
           val jsonResponse: JsValue = JsObject(Seq(
             "count" -> JsNumber(pageCount),
             "vessels" -> vessels(0)))
@@ -90,7 +89,6 @@ object Vessels extends Controller with MongoController {
 
   def removeVessel = Action.async(parse.json) {
     request =>
-      println(request.body)
       request.body.validate[Vessel].map {
         vessel =>
           collection.remove(vessel).map {
